@@ -9,10 +9,7 @@ const CATALOG_PATH = path.join(__dirname, 'data', 'catalog.json')
 const PORT = process.env.PORT || 4000
 
 const app = express()
-app.use(cors()) // wide open — this is a take-home demo, not a prod origin allowlist
-
-// Read once at boot. Swap this for a database call later; every route
-// below stays the same shape either way.
+app.use(cors()) 
 const catalog = JSON.parse(await readFile(CATALOG_PATH, 'utf-8'))
 
 app.get('/api/catalog', (req, res) => {
